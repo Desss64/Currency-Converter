@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iomanip>
 
 namespace CurrencyConverter {
 
@@ -139,9 +140,9 @@ namespace CurrencyConverter {
 			this->ToBox->DropDownWidth = 125;
 			this->ToBox->FormattingEnabled = true;
 			this->ToBox->IntegralHeight = false;
-			this->ToBox->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
-				L"Canadian Dollar", L"Euro", L"Japanese Yen", L"Great British Pound",
-					L"Mexican Peso", L"Swiss Franc"
+			this->ToBox->Items->AddRange(gcnew cli::array< System::Object^  >(7) {
+				L"Canadian Dollar", L"Euro", L"Indian Rupee", L"Japanese Yen",
+					L"Great British Pound", L"Mexican Peso", L"Swiss Franc"
 			});
 			this->ToBox->Location = System::Drawing::Point(190, 64);
 			this->ToBox->Name = L"ToBox";
@@ -196,11 +197,12 @@ namespace CurrencyConverter {
 #pragma endregion
 
 		double Canadian_Dollar = 1.34;
-		double Swiss_Franc = 0.92;
-		double Mexican_Peso = 22.39;
+		double Swiss_Franc = 0.91;
+		double Mexican_Peso = 22.09;
 		double British_Pound = 0.78;
-		double Japanese_Yen = 105.81;
-		double Euro = 0.86;
+		double Japanese_Yen = 104.87;
+		double Indian_Rupee = 74.83;
+		double Euro = 0.84;
 
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -249,6 +251,10 @@ namespace CurrencyConverter {
 		else if(ToBox->SelectedItem == "Swiss Franc")
 		{
 			conversion = Swiss_Franc * amountEntered;
+		}
+		else if (ToBox->SelectedItem == "Indian Rupee")
+		{
+			conversion = Indian_Rupee * amountEntered;
 		}
 
 		ConvertedAmountBox->Text = conversion.ToString();
